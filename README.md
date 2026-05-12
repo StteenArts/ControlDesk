@@ -122,6 +122,10 @@ app/
 │   └── Requests/
 │
 ├── Models/
+│    technical.php → usuarios técnicos
+│    control_desktops.php → inventario de PCs
+│    assigned_desktops.php → quién tiene qué PC
+│    report_issues.php → problemas reportados
 │
 ├── Services/
 │

@@ -30,7 +30,6 @@ Thumbs.db
 # Laravel
 # =========================
 
-/public/hot
 /public/storage
 /storage/*.key
 /storage/pail
