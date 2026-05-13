@@ -91,4 +91,27 @@ class ticketController extends Controller
         return response()->json(['message' => 'Ticket deleted successfully']);
     }
 
+    // To assign a ticket to a technical user
+    public function assignToTechnical(Request $request, $id){
+        // Find the ticket by ID
+        $ticket = ticket::find($id);
+
+        // Check if the ticket exists
+        if (!$ticket) {
+            return response()->json(['message' => 'Ticket not found'], 404);
+        }
+
+        // Validate the request data
+        $validatedData = $request->validate([
+            'technical_id' => 'required|integer',
+        ]);
+
+        // Update the ticket with the technical user ID
+        $ticket->technical_id = $validatedData['technical_id'];
+        $ticket->save();
+
+        // Return a response with the updated ticket
+        return response()->json(['ticket' => $ticket]);
+    }
+
 }

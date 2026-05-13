@@ -37,5 +37,8 @@ Route::get('/devices', [ApiDesktopController::class, 'index']); // Get a list of
 Route::post('/devices/assign', [ApiDesktopController::class, 'store']); // Create a new desktop
 Route::get('/devices/{id}', [ApiDesktopController::class, 'show']); // Get a specific desktop by ID
 
+// Routes to assign and unassign tickets to technicals users
+Route::post('/ticket/{id}/assign', [ApiTicketController::class, 'assignToTechnical']); // Assign a ticket to a technical user
+Route::post('/ticket/{id}/unassign', [ApiTicketController::class, 'unassignFromTechnical']); // Unassign a ticket from a technical user
 });
 
