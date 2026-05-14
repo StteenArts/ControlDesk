@@ -113,5 +113,22 @@ class ticketController extends Controller
         // Return a response with the updated ticket
         return response()->json(['ticket' => $ticket]);
     }
+    
+    public function unassignFromTechnical(Request $request, $id){
+        // Find the ticket by ID
+        $ticket = ticket::find($id);
 
+        // Check if the ticket exists
+        if (!$ticket) {
+            return response()->json(['message' => 'Ticket not found'], 404);
+        }
+
+        // Unassign the technical user from the ticket
+        $ticket->technical_id = null;
+        $ticket->save();
+
+        // Return a response with the updated ticket
+        return response()->json(['ticket' => $ticket]);
+    }
+    
 }
